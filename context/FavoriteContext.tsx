@@ -32,7 +32,7 @@ export function FavoriteProvider({
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load favorites from localStorage
+  
   useEffect(() => {
     const savedFavorites =
       localStorage.getItem("favorites");
@@ -44,7 +44,7 @@ export function FavoriteProvider({
     setIsLoaded(true);
   }, []);
 
-  // Save favorites to localStorage
+  
   useEffect(() => {
     if (!isLoaded) {
       return;
@@ -71,7 +71,7 @@ export function FavoriteProvider({
     });
   }
 
-  // Remove product from favorites
+  
   function removeFromFavorites(productId: number) {
     setFavoriteItems((prev) =>
       prev.filter((item) => item.id !== productId)

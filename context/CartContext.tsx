@@ -40,7 +40,7 @@ export function CartProvider({
 
   const [toastMessage, setToastMessage] = useState("");
 
-  // Load cart from localStorage
+  
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
 
@@ -51,7 +51,7 @@ export function CartProvider({
     setIsLoaded(true);
   }, []);
 
-  // Save cart to localStorage
+  
   useEffect(() => {
     if (!isLoaded) {
       return;
@@ -63,7 +63,7 @@ export function CartProvider({
     );
   }, [cartItems, isLoaded]);
 
-  // Toast
+  
   function showToast(message: string) {
     setToastMessage(message);
 
@@ -72,7 +72,7 @@ export function CartProvider({
     }, 500);
   }
 
-  // Add product to cart
+  
   function addToCart(product: Product) {
     setCartItems((prev) => {
       const existingItem = prev.find(
@@ -102,7 +102,7 @@ export function CartProvider({
     showToast("Product added to cart ✓");
   }
 
-  // Remove product
+  
   function removeFromCart(productId: number) {
     setCartItems((prev) =>
       prev.filter((item) => item.id !== productId)
@@ -111,7 +111,7 @@ export function CartProvider({
     showToast("Product removed from cart ✓");
   }
 
-  // Increase quantity
+  
   function increaseQuantity(productId: number) {
     setCartItems((prev) =>
       prev.map((item) =>
@@ -125,7 +125,7 @@ export function CartProvider({
     );
   }
 
-  // Decrease quantity
+  
   function decreaseQuantity(productId: number) {
     setCartItems((prev) =>
       prev.map((item) =>

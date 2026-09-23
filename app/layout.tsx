@@ -6,7 +6,7 @@ import { FavoriteProvider } from "@/context/FavoriteContext";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "My Store",
+  title: "Abu-Zena Store",
   description: "E-Commerce Store",
 };
 

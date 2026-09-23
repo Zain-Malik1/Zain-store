@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 flex flex-col gap-3 border-b border-slate-200 bg-white px-4 py-4 shadow-sm backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-6">
 
-      {/* Store Name */}
+      
       <Link
         href="/?page=1"
         className="text-xl font-bold tracking-tight text-slate-900 transition hover:text-indigo-600"
@@ -27,10 +27,10 @@ export default function Navbar() {
         Abu-Zena Store
       </Link>
 
-      {/* Navigation */}
+      
       <div className="flex w-full items-center gap-2 sm:w-auto sm:gap-4">
 
-        {/* Home */}
+        
         <Link
           href="/?page=1"
           className="flex flex-1 items-center justify-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-indigo-600 sm:flex-none sm:px-4 sm:text-base"
@@ -38,7 +38,7 @@ export default function Navbar() {
           Home
         </Link>
 
-        {/* Favorites */}
+       
         <Link
           href="/favorites"
           className="flex flex-1 items-center justify-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-indigo-600 sm:flex-none sm:gap-2 sm:px-4 sm:text-base"
@@ -52,7 +52,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Cart */}
+        
         <Link
           href="/cart"
           className="flex flex-1 items-center justify-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-indigo-600 sm:flex-none sm:gap-2 sm:px-4 sm:text-base"

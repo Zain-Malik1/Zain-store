@@ -39,10 +39,7 @@ export default function Home() {
 
   const productsPerPage = 10;
 
-  /*
-    Keep currentPage synchronized
-    with the page in the URL.
-  */
+ 
   useEffect(() => {
     const page =
       Number(searchParams.get("page")) || 1;
@@ -50,9 +47,7 @@ export default function Home() {
     setCurrentPage(page);
   }, [searchParams]);
 
-  /*
-    Get products
-  */
+  
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
@@ -64,27 +59,21 @@ export default function Home() {
 
         let response;
 
-        /*
-          Search
-        */
+       
         if (search) {
           response = await api.get<ProductsResponse>(
             `/products/search?q=${search}&limit=${productsPerPage}&skip=${skip}`
           );
         }
 
-        /*
-          Category
-        */
+       
         else if (category !== "all") {
           response = await api.get<ProductsResponse>(
             `/products/category/${category}?limit=${productsPerPage}&skip=${skip}`
           );
         }
 
-        /*
-          All products
-        */
+       
         else {
           response = await api.get<ProductsResponse>(
             `/products?limit=${productsPerPage}&skip=${skip}`
@@ -103,16 +92,12 @@ export default function Home() {
     getProducts();
   }, [search, category, currentPage]);
 
-  /*
-    Calculate total pages
-  */
+  
   const totalPages = Math.ceil(
     totalProducts / productsPerPage
   );
 
-  /*
-    Change page
-  */
+  
   function handlePageChange(page: number) {
     setCurrentPage(page);
 
@@ -122,15 +107,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-100">
 
-      {/* =========================
-          Hero Section
-          Only appears on Page 1
-      ========================== */}
+     
       {currentPage === 1 && (
         <section className="border-b border-slate-200 bg-slate-100">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-16 text-center sm:px-6 lg:flex-row lg:justify-between lg:px-8 lg:py-24 lg:text-left">
 
-            {/* Hero Text */}
+            
             <div className="max-w-2xl">
 
               <span className="inline-block rounded-full bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600">
@@ -159,7 +141,7 @@ export default function Home() {
 
             </div>
 
-            {/* Hero Visual */}
+            
             <div className="flex h-64 w-full max-w-md items-center justify-center rounded-3xl bg-gradient-to-br from-indigo-100 via-white to-slate-100 shadow-inner sm:h-80">
 
               <div className="text-center">
@@ -180,15 +162,13 @@ export default function Home() {
         </section>
       )}
 
-      {/* =========================
-          Products Section
-      ========================== */}
+      
       <section
         id="products"
         className="w-full bg-slate-100 px-6 py-12 sm:px-8 lg:px-10 xl:px-12"
       >
 
-        {/* Section Header */}
+        
         <div className="mb-8">
 
           <p className="text-sm font-semibold uppercase tracking-wider text-indigo-600">
@@ -205,12 +185,10 @@ export default function Home() {
 
         </div>
 
-        {/* =========================
-            Filters
-        ========================== */}
+        
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-3">
 
-          {/* Category */}
+          
           <div className="w-full lg:w-64">
 
             <CategoryFilter
@@ -225,7 +203,7 @@ export default function Home() {
 
           </div>
 
-          {/* Search */}
+          
           <div className="w-full lg:w-72">
 
             <SearchBar
@@ -242,9 +220,7 @@ export default function Home() {
 
         </div>
 
-        {/* =========================
-            Products
-        ========================== */}
+        
         <div className="mt-8">
 
           {loading ? (
@@ -265,7 +241,7 @@ export default function Home() {
 
         </div>
 
-        {/* Error */}
+        
         {error && <Toast message={error} />}
 
       </section>
