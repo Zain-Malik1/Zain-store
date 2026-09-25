@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import api from "@/lib/api";
 import { Product } from "@/types/product";
@@ -134,11 +135,13 @@ export default function ProductDetailsPage({
         <div className="w-full lg:w-1/2">
 
           {/* Main Image */}
-          <div className="flex h-72 items-center justify-center rounded-lg border bg-gray-50 sm:h-96">
-            <img
+          <div className="relative flex h-72 items-center justify-center rounded-lg border bg-gray-50 sm:h-96">
+            <Image
               src={selectedImage}
               alt={currentProduct.title}
-              className="h-full w-full object-contain"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain"
             />
           </div>
 
@@ -152,12 +155,14 @@ export default function ProductDetailsPage({
                   onClick={() =>
                     setSelectedImage(image)
                   }
-                  className="h-20 w-20 flex-shrink-0 rounded-lg border bg-gray-50 p-1 transition hover:border-black"
+                  className="relative h-20 w-20 flex-shrink-0 rounded-lg border bg-gray-50 p-1 transition hover:border-black"
                 >
-                  <img
+                  <Image
                     src={image}
                     alt={`${currentProduct.title} ${index + 1}`}
-                    className="h-full w-full object-contain"
+                    fill
+                    sizes="80px"
+                    className="object-contain"
                   />
                 </button>
               )

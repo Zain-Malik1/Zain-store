@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { Product } from "@/types/product";
@@ -34,7 +35,7 @@ export default function ProductCard({
   return (
     <div className="relative flex h-full w-full flex-col rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
 
-      
+      {/* Favorite */}
       <button
         onClick={handleFavorite}
         className="absolute right-3 top-3 z-10 text-2xl transition hover:scale-110"
@@ -43,29 +44,31 @@ export default function ProductCard({
         {favorite ? "❤️" : "🤍"}
       </button>
 
-      
+      {/* Product Link */}
       <Link href={`/products/${product.id}`}>
-        
-        <div className="flex h-48 w-full items-center justify-center sm:h-52">
-          <img
+
+        {/* Image */}
+        <div className="relative flex h-48 w-full items-center justify-center sm:h-52">
+          <Image
             src={product.thumbnail}
             alt={product.title}
-            className="h-full w-full cursor-pointer object-contain"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="cursor-pointer object-contain"
           />
         </div>
 
-        
+        {/* Title */}
         <div className="mt-4">
           <h2 className="line-clamp-2 min-h-[56px] text-lg font-semibold text-gray-900">
             {product.title}
           </h2>
         </div>
+
       </Link>
 
-      
       <div className="mt-2 flex flex-1 flex-col">
 
-       
         <p className="line-clamp-3 min-h-[72px] text-sm leading-6 text-gray-700">
           {product.description}
         </p>
@@ -75,12 +78,12 @@ export default function ProductCard({
           Category: {product.category}
         </p>
 
-        
+       
         <p className="mt-3 text-xl font-bold text-gray-900">
           ${product.price}
         </p>
 
-       
+        
         <button
           onClick={() => addToCart(product)}
           className="mt-auto w-full rounded-lg bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800"
